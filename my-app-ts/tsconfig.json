@@ -1,0 +1,28 @@
+// 编译器配置文件
+{
+  "compilerOptions": {
+    "noImplicitAny": false, // 不需要显示声明变量的类型any（此条自己添加）
+    "target": "es5", // 编译后的目标JavaScript版本
+    "lib": [ // 编译需要的库文件 告诉编译器哪些功能可以使用
+      "dom", 
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true, // 允许混合编译JS文件
+    "skipLibCheck": true,
+    "esModuleInterop": true, // 允许使用commonjs方式import默认文件
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext", // 配置代码的模块系统 主要包括Nodejs的CommonJS、ES6的esnext、requirejs的AMD
+    "moduleResolution": "node", // 决定编译器的工作方式 "node" "classic"(已废弃)
+    "resolveJsonModule": true, 
+    "isolatedModules": true, // 编译器会将每个文件作为单独模块来使用
+    "noEmit": true, // 表示当发生错误时 编译器不要生成JS代码
+    "jsx": "react-jsx" // 允许编译器支持编译react代码
+  },
+  "include": [
+    "src"
+  ]
+}
