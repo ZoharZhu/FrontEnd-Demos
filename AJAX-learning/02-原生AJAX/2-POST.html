@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 150px;
+      border: 1px solid #cd6969
+    }
+  </style>
+</head>
+
+<body>
+  <div id="res"></div>
+  <script>
+    const result = document.getElementById("res")
+    result.addEventListener("mouseover", function() {
+      const xhr = new XMLHttpRequest()
+      // 初始化 设置类型与url
+      xhr.open("POST", "http://127.0.0.1:8000/server")
+      // 设置请求头
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+      xhr.setRequestHeader("name", "ZZH")
+      // 发送
+      // POST方法设置请求参数（请求体）
+      xhr.send("a=1&b=2&c=3")
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4) {
+          if(xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.status);
+            console.log(xhr.statusText);
+            console.log(xhr.getAllResponseHeaders);
+            console.log(xhr.response);
+            result.innerHTML = xhr.response
+          } else {
+
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

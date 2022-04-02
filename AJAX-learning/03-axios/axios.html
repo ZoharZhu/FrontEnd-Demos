@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h2 {
+      width: 1200px;
+      margin: 50px auto 20px;
+      padding-bottom: 10px;
+      font-size: 30px;
+      border-bottom: 1px solid gray;
+    }
+
+    button {
+      border-radius: 5px;
+      height: 35px;
+      width: 100px;
+      background-color: blueviolet;
+      float: left;
+      margin-right: 10px;
+      color: white;
+      border: none;
+      text-align: center;
+    }
+
+    .btn-primary {
+      margin-left: 160px;
+      background-color: #cd6969;
+    }
+
+    .btn-danger {
+      background-color: orange;
+    }
+  </style>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
+</head>
+
+<body>
+  <h2>axios发送Ajax请求</h2>
+  <button class="btn btn-primary">GET</button>
+  <button class="btn btn-danger">POST</button>
+  <button class="btn btn-info">通用型</button>
+  <script>
+    const btns = document.querySelectorAll('button')
+    // 也可以配置baseURL
+    // axios.defaults.baseURL = 'http://127.0.0.1:8000' 
+    btns[0].onclick = function () {
+      //GET请求
+      axios.get('http://127.0.0.1:8000/axios-server', {
+        //url参数
+        params: {
+          id: 001,
+          vip: 1
+        },
+        //请求头信息
+        headers: {
+          name: 'WXT',
+          age: '16'
+        }
+      }).then(value => {
+        console.log(value)
+      })
+    }
+    btns[1].onclick = function () {
+      axios.post('http://127.0.0.1:8000/axios-server', {
+        username: 'admin',
+        password: '123'
+      }, {
+        //url参数
+        params: {
+          id: 002,
+          vip: 2
+        },
+        //请求头参数
+        headers: {
+          name: 'SHY',
+          age: '22'
+        },
+        //请求体参数
+        data: {
+          name: 'Zohar',
+          age: '22'
+        }
+      })
+    }
+    btns[2].onclick = function () {
+      axios({
+        method: 'POST',
+        url: 'http://127.0.0.1:8000/axios-server',
+        //url参数
+        params: {
+          id: 003,
+          vip: 3
+        },
+        //头信息
+        headers: {
+          name: 'BY',
+          age: '21'
+        },
+        //请求体参数
+        data: {
+          name: 'Zohar',
+          age: '24'
+        }
+      }).then(res => {
+        console.log(res)
+      })
+    }
+  </script>
+</body>
+
+</html>
